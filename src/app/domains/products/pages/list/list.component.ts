@@ -10,4 +10,10 @@ import {ProductComponent} from './../../components/product/product.component'
 })
 export class ListComponent {
 
+  ftomChild(event: Event){
+    console.log('esta en el padre');
+    console.log(event);
+
+  }
+
 }
