@@ -15,19 +15,41 @@ export class CounterComponent {
   constructor(){
     // No ASYNC
     // before render
-    console.log('Constructor')
-    console.log('-'.repeat(10))
+    // Corre una vez
+    console.log('Constructor');
+    console.log('-'.repeat(10));
 
   }
 
   ngOnChanges(change: SimpleChange){
     // before and during render
-    console.log('ngOnChanges')
-    console.log('-'.repeat(10))
-    console.log(change)
+    console.log('ngOnChanges');
+    console.log('-'.repeat(10));
+    console.log(change);
+  }
 
+  ngOnInit(){
+    // after render
+    // Corre una vez
+    // Async, then, subs
+    console.log('ngOnInit');
+    console.log('-'.repeat(10));
+    console.log('duration =>', this.duration);
+    console.log('menssage =>', this.message);
 
   }
 
+  ngAfterViewInit(){
+    //after render
+    // Si los ya fuero pintados
+    console.log('ngAfterViewInit');
+    console.log('-'.repeat(10));
+
+  }
+
+  ngOnDestroy(){
+    console.log('ngOnDestroy');
+    console.log('-'.repeat(10));
+  }
 
 }
