@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,4 +9,9 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
 
+  hideSideMenu = signal(true)
+
+  toogleSideMenu(){
+    this.hideSideMenu.update(state => !state);
+  }
 }
