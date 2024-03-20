@@ -53,7 +53,7 @@
       </div>
       <div class="flow-root">
         <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-          @for (prod of cart; track prod.id) {
+          @for (prod of cart(); track prod.id) {
           <li class="py-3 sm:py-4">
             <div class="flex items-center">
               <div class="flex-shrink-0">
