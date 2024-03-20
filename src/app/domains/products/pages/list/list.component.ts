@@ -4,6 +4,7 @@ import {Product} from './../../../shared/models/product.model'
 import { Title } from '@angular/platform-browser';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { CartService } from '../../../shared/services/cart.service';
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -18,60 +19,21 @@ export class ListComponent {
   //cart = signal<Product[]>([]);
 
   cartService = inject(CartService)
+  productService = inject(ProductService)
 
-
-  constructor(){
-    const initProducts: Product[] = [
-      {
-      id: Date.now(),
-      title: 'Pro 1',
-      price: 10,
-      image: "https://picsum.photos/640/640?r=23",
-      creationAt: new Date().toISOString()
+  ngOnInit(){
+    this.productService.getProducts()
+    .subscribe({
+      next: (products) =>{
+        this.products.set(products)
       },
-      {
-        id: Date.now(),
-        title: 'Pro 2',
-        price: 30,
-        image: "https://picsum.photos/640/640?r=12",
-        creationAt: new Date().toISOString()
-        },
+      error: (e) => {
         
-      {
-        id: Date.now(),
-        title: 'Pro 3',
-        price: 40,
-        image: "https://picsum.photos/640/640?r=13",
-        creationAt: new Date().toISOString()
-
-        },
-        {
-          id: Date.now(),
-          title: 'Pro 4',
-          price: 100,
-          image: "https://picsum.photos/640/640?r=24",
-          creationAt: new Date().toISOString()
-          },
-          {
-            id: Date.now(),
-            title: 'Pro 5',
-            price: 0,
-            image: "https://picsum.photos/640/640?r=15",
-            creationAt: new Date().toISOString()
-            },
-            
-          {
-            id: Date.now(),
-            title: 'Pro 6',
-            price: 1,
-            image: "https://picsum.photos/640/640?r=16",
-            creationAt: new Date().toISOString()
-    
-            }
-    ];
-
-    this.products.set(initProducts)
+      }
+    }
+    )
   }
+
 
   ftomChild(event: Event){
     console.log('esta en el padre');
