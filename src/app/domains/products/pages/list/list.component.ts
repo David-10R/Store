@@ -1,10 +1,10 @@
 import { Component, inject, signal } from '@angular/core'
-import {ProductComponent} from './../../components/product/product.component'
-import {Product} from './../../../shared/models/product.model'
+import {ProductComponent} from '@product/components/product/product.component'
+import {Product} from '@shared/models/product.model'
 import { Title } from '@angular/platform-browser';
-import { HeaderComponent } from '../../../shared/components/header/header.component';
-import { CartService } from '../../../shared/services/cart.service';
-import { ProductService } from '../../../shared/services/product.service';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { CartService } from '@shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -28,7 +28,7 @@ export class ListComponent {
         this.products.set(products)
       },
       error: (e) => {
-        
+
       }
     }
     )
